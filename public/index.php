@@ -13,13 +13,13 @@ $path = $request->getPathInfo();
 
 // First iteration of a router/front-controller.
 
-if(in_array($path, ['/']))
-{
-    $response = new Response('Showing the homepage.');
-}else
-{
+if (in_array($path, ['/'])) {
+    $response = new Response('Homepage.');
+} else if (in_array($path, ['/contact'])) {
+    $response = new Response('Contact Page');
+} else {
     $response = new Response('404. Something has gone wrong');
 }
 
-dump($response);
-
+// Output page to browser.
+$response->send();
