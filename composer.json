@@ -2,7 +2,7 @@
     "name": "luke/component-api",
     "autoload": {
         "psr-4": {
-            "Luke\\App\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
