@@ -15,7 +15,7 @@ class SQLiteDatabase extends Database
     public function __construct(string $databaseName = "test")
     {
         $this->connection = new PDO(
-            "sqlite: {$databaseName}.db"
+            "sqlite:{$databaseName}.db"
         );
 
         $this->connection->setAttribute(
