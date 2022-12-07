@@ -3,7 +3,6 @@
 namespace App\DB;
 
 use App\DB\Database;
-use App\DB\SQLiteDatabase;
 
 class Query
 {
@@ -24,14 +23,10 @@ class Query
      *
      * @return PDO
      */
-    public function selectAll(string $table) : array
+    public function selectAll(string $table): array
     {
-        dump($this->conn);
         $query = "select * from {$table}";
-        $stmt = $this->conn->exec($query);
-        dump($stmt);
-        //dump($stmt->fetchAll());
+        $stmt = $this->conn->query($query);
         return $stmt->fetchAll();
     }
 }
-
