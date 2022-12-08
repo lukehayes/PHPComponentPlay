@@ -19,7 +19,9 @@ class Query
     }
 
     /**
-     * Select all
+     * Runs select * on a given table.
+     *
+     * @param string $table
      *
      * @return PDO
      */
