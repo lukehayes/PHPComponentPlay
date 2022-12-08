@@ -39,6 +39,11 @@ final class QueryTest extends TestCase
         $this->assertNotEmpty($selectAllQuery);
 
         $this->assertArrayHasKey('id', $selectAllQuery[0]);
+    }
 
+    public function testGetUser()
+    {
+        $userRow = $this->query->getUser('developer');
+        $this->assertNotEmpty($userRow);
     }
 }
