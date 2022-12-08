@@ -3,9 +3,8 @@
 namespace App\DB;
 
 use App\DB\Database;
-use App\DB\DatabaseRow;
 
-class Query extends DatabaseRow
+class Query 
 {
     private $conn = NULL;
 
@@ -29,7 +28,29 @@ class Query extends DatabaseRow
     public function selectAll(string $table): array
     {
         $query = "select * from {$table}";
-        $this->container = ($this->conn->query($query))->fetchAll();
-        return $this->container;
+        return ($this->conn->query($query))->fetchAll();
+    }
+
+    /**
+     * Select specific fields from the database.
+     *
+     * @param string $table      The name of the table.
+     *
+     * @param string $columns    All of the columns to retrive from the table.
+     *
+     * @return PDO
+     */
+    public function selectFrom(string $table, ...$columns): array
+    {
+        $query = "select ";
+
+        foreach($columns as $column)
+        {
+            $query .= $column . " ";
+        }
+
+        $query .= "from $table";
+
+        return ($this->conn->query($query))->fetchAll();
     }
 }
