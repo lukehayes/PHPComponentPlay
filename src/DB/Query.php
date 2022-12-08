@@ -3,8 +3,9 @@
 namespace App\DB;
 
 use App\DB\Database;
+use App\DB\DatabaseRow;
 
-class Query
+class Query extends DatabaseRow
 {
     private $conn = NULL;
 
@@ -28,7 +29,7 @@ class Query
     public function selectAll(string $table): array
     {
         $query = "select * from {$table}";
-        $stmt = $this->conn->query($query);
-        return $stmt->fetchAll();
+        $this->container = ($this->conn->query($query))->fetchAll();
+        return $this->container;
     }
 }
