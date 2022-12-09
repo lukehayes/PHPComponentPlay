@@ -17,8 +17,8 @@ $server  = $request->server;
 $path    = $request->getPathInfo();
 $query = new Query(new SQLiteDatabase("db"));
 
-dump($query);
-dump($query->selectAll("data"));
+$sesh = new Session();
+$sesh->getFlashBag()->add('notice', 'A quick flash message');
 
 
 // First iteration of a router/front-controller.
@@ -28,25 +28,18 @@ if (in_array($path, ['/'])) {
 
     if( $request->getMethod() == "GET")
     {
+        dump($sesh->getFlashBag()->get('notice'));
         // Load the contact form if its a GET request.
         $response = View::load('form');
     }else
     {
         // Process the input if POST.
         dump($request->request);
+        die("Died");
+        $response = new RedirectResponse('/contact');
     }
 } else if (in_array($path, ['/dashboard'])) {
-
-    if( $request->getMethod() == "GET")
-    {
-        // Load the contact form if its a GET request.
-        $response = View::load('form');
-    }else
-    {
-        // Process the input if POST.
-        dump($request->request);
-    }
-
+    $response = new Response('Showing Dashboard.');
 } else {
     $response = View::load('error');
 }
