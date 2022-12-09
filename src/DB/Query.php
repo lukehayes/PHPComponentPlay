@@ -54,14 +54,12 @@ class Query
         return ($this->conn->query($query))->fetchAll();
     }
 
-    public function getUser(string $user, string $table = 'users') : array
+    public function getUser(string $user, string $table = 'users') : object
     {
-        // FIXME PDO parameter binding is not working correctly.
-        
         // $this->conn->setAttribute(\PDO::ATTR_EMULATE_PREPARES, true);
         $query = "select * from $table where username=?";
         $pdo_statement  = $this->conn->prepare($query);
-        $pdo_statement  = $pdo_statement->execute([$user]);
-        return ($pdo_statement);
+        $pdo_statement->execute([$user]);
+        return $pdo_statement->fetchObject();
     }
 }
