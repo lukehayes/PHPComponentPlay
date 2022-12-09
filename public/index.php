@@ -4,11 +4,13 @@
 
 require '../vendor/autoload.php';
 
+use App\View;
+use App\DB\Query;
+use App\DB\SQLiteDatabase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\View;
-use App\DB\SQLiteDatabase;
-use App\DB\Query;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 $request = Request::createFromGlobals();
 $server  = $request->server;
