@@ -20,30 +20,32 @@ final class QueryTest extends TestCase
 
     public function testSelectAll()
     {
-        $selectAllQuery = $this->query->selectAll('users');
+        $query = $this->query->selectAll('users');
 
-        $this->assertIsArray($selectAllQuery);
+        $this->assertIsArray($query);
 
-        $this->assertNotEmpty($selectAllQuery);
+        $this->assertNotEmpty($query);
 
-        $this->assertArrayHasKey('0', $selectAllQuery);
+        $this->assertArrayHasKey('0', $query);
 
     }
 
     public function testSelectFrom()
     {
-        $selectAllQuery = $this->query->selectFrom('users', 'id', 'username');
+        $query = $this->query->selectFrom('users', 'id', 'username');
 
-        $this->assertIsArray($selectAllQuery);
+        $this->assertIsArray($query);
 
-        $this->assertNotEmpty($selectAllQuery);
+        $this->assertNotEmpty($query);
 
-        $this->assertArrayHasKey('id', $selectAllQuery[0]);
+        $this->assertArrayHasKey('0', $query);
+
+        $this->assertObjectHasAttribute('username', $query[0]);
     }
 
     public function testGetUser()
     {
-        $user = $this->query->getUser('developer');
+        $user = $this->query->getUser('admin');
 
         $this->assertNotEmpty($user);
 
