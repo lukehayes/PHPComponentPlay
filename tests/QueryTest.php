@@ -43,10 +43,10 @@ final class QueryTest extends TestCase
 
     public function testGetUser()
     {
-        $userRow = $this->query->getUser('developer');
+        $user = $this->query->getUser('developer');
 
-        $this->assertNotEmpty($userRow);
+        $this->assertNotEmpty($user);
 
-        $this->assertObjectHasAttribute('username', $userRow);
+        $this->assertObjectHasAttribute('username', $user);
    }
 }

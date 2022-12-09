@@ -3,6 +3,7 @@
 namespace App\DB;
 
 use App\DB\Database;
+use App\DB\Model\User;
 
 class Query 
 {
@@ -56,10 +57,9 @@ class Query
 
     public function getUser(string $user, string $table = 'users') : object
     {
-        // $this->conn->setAttribute(\PDO::ATTR_EMULATE_PREPARES, true);
         $query = "select * from $table where username=?";
         $pdo_statement  = $this->conn->prepare($query);
         $pdo_statement->execute([$user]);
-        return $pdo_statement->fetchObject();
+        return $pdo_statement->fetchObject(User::class);
     }
 }
