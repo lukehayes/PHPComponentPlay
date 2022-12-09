@@ -13,7 +13,7 @@ create table users(
     password text
 );
 
-insert into users
-            (id, username, password)
+insert into users (id, username, password)
        values
-            (null, "developer", "password");
+            (null, "developer", "password"),
+            (null, "admin", "password");
