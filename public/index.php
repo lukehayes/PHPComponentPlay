@@ -19,25 +19,41 @@ $query = new Query(new SQLiteDatabase("db"));
 
 $sesh = new Session();
 $sesh->getFlashBag()->add('notice', 'A quick flash message');
-
+$sesh->getFlashBag()->add('login_failed', 'Failed to login.');
+$sesh->getFlashBag()->add('user_not_found', 'Username could not be found');
 
 // First iteration of a router/front-controller.
 if (in_array($path, ['/'])) {
     $response = View::load('home');
-} else if (in_array($path, ['/contact'])) {
+} else if (in_array($path, ['/login'])) {
 
     if( $request->getMethod() == "GET")
     {
-        dump($sesh->getFlashBag()->get('notice'));
-        // Load the contact form if its a GET request.
+        //dump($sesh->getFlashBag()->get('notice'));
+        // Load the login form if its a GET request.
         $response = View::load('form');
     }else
     {
         // Process the input if POST.
-        dump($request->request);
-        die("Died");
-        $response = new RedirectResponse('/contact');
+        $username = $request->request->get('username');
+        $user = $query->getUser($username);
+
+
+
+        if($user->authenticated)
+        {
+            echo $sesh->get('login_failed');
+            $response = new RedirectResponse('/dashboard');
+        }else
+        {
+            dd($sesh->get('login_failed'));
+            $response = new RedirectResponse('/login');
+        }
+
+        // If login successful then redirect to the dashboard page.
+        $response = new RedirectResponse('/dashboard');
     }
+
 } else if (in_array($path, ['/dashboard'])) {
     $response = new Response('Showing Dashboard.');
 } else {
