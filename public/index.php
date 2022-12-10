@@ -23,7 +23,7 @@ $sesh->getFlashBag()->add('notice', 'A quick flash message');
 
 // First iteration of a router/front-controller.
 if (in_array($path, ['/'])) {
-    $response = new Response('Homepage.');
+    $response = View::load('home');
 } else if (in_array($path, ['/contact'])) {
 
     if( $request->getMethod() == "GET")
