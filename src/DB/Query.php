@@ -55,6 +55,15 @@ class Query
         return ($this->conn->query($query))->fetchAll();
     }
 
+    /**
+     * Get a specific user from the database.
+     *
+     * @param string $user       The username to search for.
+     *
+     * @param string $table      The name of the table.
+     *
+     * @return Object
+     */
     public function getUser(string $user, string $table = 'users') : object
     {
         $query = "select * from $table where username=?";
