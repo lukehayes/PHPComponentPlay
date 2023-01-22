@@ -6,6 +6,8 @@ namespace App\DB\Model;
  **/
 class User
 {
+    private $authenticated = false;
+
     public function getID() : int
     {
         return $this->id;
@@ -14,5 +16,15 @@ class User
     public function getUsername() : string
     {
         return $this->username;
+    }
+
+    public function authenticated() : bool
+    {
+        return $this->authenticated;
+    }
+
+    public function notAuthenticated() : bool
+    {
+        return !!$this->authenticated;
     }
 }
