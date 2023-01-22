@@ -64,7 +64,7 @@ class Query
      *
      * @return Object
      */
-    public function getUser(string $user, string $table = 'users') : object
+    public function getUser(string $user, string $table = 'users') : mixed
     {
         $query = "select * from $table where username=?";
         $pdo_statement  = $this->conn->prepare($query);
