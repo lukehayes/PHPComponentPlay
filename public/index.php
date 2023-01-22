@@ -26,7 +26,9 @@ $session = new Session();
 
 // First iteration of a router/front-controller.
 if (in_array($path, ['/'])) {
+
     $response = View::load('home');
+
 } else if (in_array($path, ['/login'])) {
 
     if( $request->getMethod() == "GET")
@@ -40,6 +42,7 @@ if (in_array($path, ['/'])) {
         $response = View::load('form');
     }else
     {
+        // Get user input from the form.
         // Process the input if POST.
         $username = $request->request->get('username');
         $password = $request->request->get('password');
@@ -58,6 +61,7 @@ if (in_array($path, ['/'])) {
 
         if(!empty($password) && $user->password === $password)
         {
+            //die("Login Success");
             $response = new RedirectResponse('/dashboard');
         }else {
             $session->getFlashBag()->add('user_not_found', 'User could not be found');
@@ -66,6 +70,9 @@ if (in_array($path, ['/'])) {
     }
 
 } else if (in_array($path, ['/dashboard'])) {
+
+    dump($user);
+    die();
     
     if(!$user)
     {
