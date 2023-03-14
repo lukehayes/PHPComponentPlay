@@ -1,21 +1,25 @@
 <?php
-
 namespace App\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Controllers\BaseController;
+use App\View;
 
-class TestController
+class TestController extends BaseController
 {
-  public function index(Request $request) : Response
+  public function __construct(Request $request)
   {
-    // dump($request);
-    return new Response("Endpoint");
+    parent::__construct($request);
   }
 
-  public function other(Request $request) : Response
+  public function index() : Response
   {
-    // dump($request);
-    return new Response("Other Endpoint");
+    return View::load("home");
+  }
+
+  public function other() : Response
+  {
+    return View::load("form");
   }
 }
