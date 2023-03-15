@@ -8,9 +8,9 @@ use App\View;
 
 class TestController extends BaseController
 {
-  public function __construct(Request $request)
+  public function __construct()
   {
-    parent::__construct($request);
+    parent::__construct();
   }
 
   public function index() : Response

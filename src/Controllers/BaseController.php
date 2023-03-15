@@ -5,10 +5,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BaseController
 {
-  protected $request = NULL;
+  public $request = NULL;
 
-  public function __construct(Request $request)
+  public function __construct()
   {
-    $this->request = $request;
+    $this->request = Request::createFromGlobals();
   }
 }
