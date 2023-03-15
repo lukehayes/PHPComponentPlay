@@ -4,16 +4,15 @@
 
 require '../vendor/autoload.php';
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-// use Symfony\Component\HttpFoundation\Session\Session;
-
 use App\Controllers\TestController;
+use App\Request;
 
-$request    = Request::createFromGlobals();
+$request    = new Request();
+
 $controller = new TestController();
-$path       = $request->getPathInfo();
-$method     = $request->server->get('REQUEST_METHOD');
+$path       = $request->current->getPathInfo();
+$method     = $request->current->server->get('REQUEST_METHOD');
 
 // Routing -----------------------------------------
 // -------------------------------------------------
