@@ -28,6 +28,10 @@ class Request extends SymfonyRequest
 
     /**
     * Get all of the parameters from the current request.
+
+    /**
+     * Get all of the parameters from the current request regardless
+     * if they have been set or not.
     *
     * @return array.
     */
