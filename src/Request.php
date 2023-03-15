@@ -27,7 +27,17 @@ class Request extends SymfonyRequest
     }
 
     /**
-    * Get all of the parameters from the current request.
+    * Get all of the parameters that where explictly set from the current request.
+    *
+    * @return array.
+    */
+    public function getSetParams() : array
+    {
+        return array_filter(
+            $this->current->request->all(),
+            fn($param) => isset($param) && !empty($param)
+        );
+    }
 
     /**
      * Get all of the parameters from the current request regardless
