@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Controllers\TestController;
 use App\Request;
 
+use App\Service\TwigService;
+
+$twig = App\App::get(TwigService::class);
+
 $request    = new Request();
 
 $controller = new TestController();
