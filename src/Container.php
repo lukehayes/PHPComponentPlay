@@ -38,13 +38,10 @@ class Container implements ContainerInterface
      */
     public function getService(string $name) : mixed
     {
-        if(array_key_exists($name, $this->services))
-        {
-            return $this->services[$name];
-        }else
-        {
-            return false;
-        }
+        if(!array_key_exists($name, $this->services))
+            throw new ServiceNotFoundException("Service: [$name] could not be found.");
+        
+        return $this->services[$name];
     }
 
     public function getServices() : array
