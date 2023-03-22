@@ -17,7 +17,7 @@ class App
         // object when it gets a little larger.
         // 
         // Add default services here.
-        static::$container->addService(TwigService::class, new TwigService());
+        static::$container->addService(TwigService::class, TwigService::class);
     }
 
 
@@ -33,7 +33,7 @@ class App
 
 
     /**
-    * Get a get a service from the container.
+    * Get a service from the container.
     *
     * @param string $service
     *

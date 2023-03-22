@@ -21,29 +21,32 @@ class Container implements ContainerInterface
      * Add a service to the container.
      *
      * @param string $name        The name to give to the service for reference.
-     * @param Service $service    The service object to add.
+     *
+     * @param string $service     The service object to add.
      *
      * @return void
      */
-    public function addService(string $name, Service $service)
+    public function addService(string $name, string $service)
     {
         $this->services[$name] = $service;
     }
 
 
     /**
-     * Get a specific service from the container.
+     * Get a new instance of a service from the container.
      *
      * @param string $name The name of the service to retrieve from the container.
      *
-     * @return mixed
+     * @throws ServiceNotFoundException.
+     *
+     * @return Service
      */
-    public function getService(string $name) : mixed
+    public function getService(string $name) : Service
     {
         if(!$this->hasService($name))
             throw new ServiceNotFoundException("Service: [$name] could not be found.");
         
-        return $this->services[$name];
+        return new $this->services[$name];
     }
 
 
