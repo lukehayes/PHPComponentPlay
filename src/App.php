@@ -6,6 +6,21 @@ use App\Service\TwigService;
 
 class App
 {
+
+    private static $container = NULL;
+
+    public static function setContainer(Container $container)
+    {
+        static::$container = $container;
+
+        // TODO Refactor this logic out into another function/
+        // object when it gets a little larger.
+        // 
+        // Add default services here.
+        static::$container->addService(TwigService::class, new TwigService());
+    }
+
+
     /**
     * Get an instance of the service container.
     *
@@ -13,16 +28,12 @@ class App
     */
     public static function container() : Container
     {
-        $container = new Container();
-
-        // Add default services here.
-        $container->addService(TwigService::class, new TwigService());
-
-        return $container;
+        return static::$container;
     }
 
+
     /**
-    * Get an get a service from the container.
+    * Get a get a service from the container.
     *
     * @param string $service
     *
