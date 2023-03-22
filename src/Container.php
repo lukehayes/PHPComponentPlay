@@ -44,7 +44,12 @@ class Container implements ContainerInterface
         return $this->services[$name];
     }
 
-    public function getServices() : array
+    /**
+     * Get a list of all the available services.
+     *
+     * @return array.
+     */
+    public function services() : array
     {
         return $this->services;
     }
