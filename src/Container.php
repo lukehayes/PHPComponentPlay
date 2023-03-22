@@ -16,6 +16,7 @@ class Container implements ContainerInterface
      */
     private $services = [];
 
+
     /**
      * Add a service to the container.
      *
@@ -29,6 +30,7 @@ class Container implements ContainerInterface
         $this->services[$name] = $service;
     }
 
+
     /**
      * Get a specific service from the container.
      *
@@ -38,11 +40,12 @@ class Container implements ContainerInterface
      */
     public function getService(string $name) : mixed
     {
-        if(!array_key_exists($name, $this->services))
+        if(!$this->hasService($name))
             throw new ServiceNotFoundException("Service: [$name] could not be found.");
         
         return $this->services[$name];
     }
+
 
     /**
      * Get a list of all the available services.
@@ -53,6 +56,20 @@ class Container implements ContainerInterface
     {
         return $this->services;
     }
+
+
+    /**
+     * Wrapper for Contianer::has() method.
+     *
+     * @throws ServiceNotFoundException.
+     *
+     * @return bool.
+     */
+    public function hasService(string $id) : bool
+    {
+        return $this->has($id);
+    }
+
 
     /**
      * ---------------------------------------------------------------------
@@ -83,6 +100,7 @@ class Container implements ContainerInterface
         }
     }
 
+
     /**
      * Returns true if the container can return an entry for the given identifier.
      * Returns false otherwise.
@@ -98,5 +116,4 @@ class Container implements ContainerInterface
     {
 		return array_key_exists($id, $this->services) ? true : false;
     }
-
 }
