@@ -4,8 +4,8 @@ namespace App;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 /**
- * Request class exists to add helper methods for common
- * tasks when working with a Request.
+ * Request class is a wrapper to HttpFoundation\Request to
+ * add helpful convienience methods.
  */
 class Request extends SymfonyRequest
 {
