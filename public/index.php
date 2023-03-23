@@ -12,11 +12,13 @@ use App\Controllers\TestController;
 use App\App;
 use App\Container;
 use App\Service\TwigService;
+use App\Service\DatabaseService;
 
 // Setup -------------------------------------------
 // -------------------------------------------------
 $container = new Container();
 $container->addService(TwigService::class);
+$container->addService(DatabaseService::class);
 $app  = App::setContainer($container);
 $twig = App::get(TwigService::class);
 
