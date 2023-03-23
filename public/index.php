@@ -4,22 +4,33 @@
 
 require '../vendor/autoload.php';
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Controllers\TestController;
-use App\Request;
+// use App\Request;
 
+use App\App;
+use App\Container;
 use App\Service\TwigService;
 
-$twig = App\App::get(TwigService::class);
+// Setup -------------------------------------------
+// -------------------------------------------------
+$container = new Container();
+$container->addService(TwigService::class);
+$app  = App::setContainer($container);
+$twig = App::get(TwigService::class);
 
-$request    = new Request();
+$request    = Request::createFromGlobals();
 
-$controller = new TestController();
-$path       = $request->current->getPathInfo();
-$method     = $request->current->server->get('REQUEST_METHOD');
+// -------------------------------------------------
+
 
 // Routing -----------------------------------------
 // -------------------------------------------------
+
+$controller = new TestController();
+$path       = $request->getPathInfo();
+$method     = $request->server->get('REQUEST_METHOD');
 
 if($method === "GET")
 {
