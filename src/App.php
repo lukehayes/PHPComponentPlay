@@ -51,7 +51,7 @@ class App
     */
     public static function get(string $service)
     {
-        return static::container()->getServiceInstance($service);
+        return static::container()->getBaseServiceInstance($service);
     }
 }
 
