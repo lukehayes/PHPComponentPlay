@@ -3,7 +3,7 @@ namespace App\Service;
 
 use App\Service\Service;
 use App\DB\Database;
-use App\DB\PDOConnection;
+use App\DB\SQLiteDatabase;
 
 class DatabaseService extends Service
 {
@@ -11,7 +11,7 @@ class DatabaseService extends Service
 
     public function __construct()
     {
-		$this->service = new Database(new PDOConnection());
+		$this->service = new SQLiteDatabase("db");
     }
 
     /**
