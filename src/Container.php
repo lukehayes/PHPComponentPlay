@@ -41,7 +41,7 @@ class Container implements ContainerInterface
      *
      * @return Service
      */
-    public function getService(string $name) : Service
+    public function getServiceInstance(string $name) : Service
     {
         if(!$this->hasService($name))
             throw new ServiceNotFoundException("Service: [$name] could not be found.");
