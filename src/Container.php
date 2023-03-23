@@ -18,17 +18,16 @@ class Container implements ContainerInterface
 
 
     /**
-     * Add a service to the container.
+     * Add a service to the container. If the service already exists,
+     * then it will be overwritten.
      *
      * @param string $name        The name to give to the service for reference.
      *
-     * @param string $service     The service object to add.
-     *
-     * @return void
+     * @return void.
      */
-    public function addService(string $name, string $service)
+    public function addService(string $name) : void 
     {
-        $this->services[$name] = $service;
+        $this->services[$name] = $name;
     }
 
     /**
