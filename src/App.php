@@ -9,6 +9,13 @@ class App
 
     private static $container = NULL;
 
+    /**
+    * Set the apps service container explicitly.
+    *
+    * @param Container $container.
+    *
+    * @return void.
+    */
     public static function setContainer(Container $container)
     {
         static::$container = $container;
