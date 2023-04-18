@@ -30,6 +30,7 @@ $request = new Request();
 // Routing -----------------------------------------
 // -------------------------------------------------
 
+// TODO Implement some kind of dynamic controller/action generation.
 $controller = new TestController();
 $path       = $request->current->getPathInfo();
 $method     = $request->current->server->get('REQUEST_METHOD');
@@ -51,5 +52,7 @@ if($method === "GET")
     }
 }else 
 {
+    // TODO Implement Authentication, validation etc.
+    dump($request);
     dd("Revieved POST request. Dying.");
 }
