@@ -6,34 +6,28 @@ require '../vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Response;
 use App\Controllers\TestController;
-use App\Request;
 
 use App\App;
 use App\Container;
-use App\Service\TwigService;
-use App\Service\DatabaseService;
 
-// Setup -------------------------------------------
+// -------------------------------------------------
+// Setup 
+// -------------------------------------------------
+//
 // -------------------------------------------------
 $container = new Container();
-$container->addService(TwigService::class);
-$container->addService(DatabaseService::class);
 $app  = App::setContainer($container);
-$twig = App::get(TwigService::class);
-$db   = App::get(DatabaseService::class);
-
-$request = new Request();
 
 // -------------------------------------------------
-
-
-// Routing -----------------------------------------
+// Routing 
 // -------------------------------------------------
-
+//
+// -------------------------------------------------
 // TODO Implement some kind of dynamic controller/action generation.
 $controller = new TestController();
-$path       = $request->current->getPathInfo();
-$method     = $request->current->server->get('REQUEST_METHOD');
+
+$path       = $controller->request->getPathInfo();
+$method     = $controller->request->server->get('REQUEST_METHOD');
 
 if($method === "GET")
 {

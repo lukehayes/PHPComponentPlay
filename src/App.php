@@ -25,6 +25,7 @@ class App
         // 
         // Add default services here.
         static::$container->addService(TwigService::class);
+        static::$container->addService(DatabaseService::class);
     }
 
 
@@ -58,7 +59,7 @@ class App
     */
     public static function get(string $service)
     {
-        return static::container()->getBaseServiceInstance($service);
+        return static::container()->getBaseServiceObject($service);
     }
 }
 
