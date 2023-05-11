@@ -9,6 +9,7 @@ use App\Controllers\TestController;
 
 use App\App;
 use App\Container;
+use App\Service\TwigService as Twig;
 
 // -------------------------------------------------
 // Setup 
@@ -17,6 +18,7 @@ use App\Container;
 // -------------------------------------------------
 $container = new Container();
 $app  = App::setContainer($container);
+$twig = $container->getServiceInstance(Twig::class);
 
 // -------------------------------------------------
 // Routing 
