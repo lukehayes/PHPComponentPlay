@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
  * Request class is a wrapper to HttpFoundation\Request to
  * add helpful convienience methods.
  */
-class Request extends SymfonyRequest
+class Request
 {
     public $current = NULL;
 

@@ -47,6 +47,6 @@ if($method === "GET")
 }else 
 {
     // TODO Implement Authentication, validation etc.
-    dump($request);
+    dump($controller->request);
     dd("Revieved POST request. Dying.");
 }

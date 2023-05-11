@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class BaseController
 {
@@ -9,6 +9,6 @@ class BaseController
 
     public function __construct()
     {
-        $this->request = new Request();
+        $this->request = Request::createFromGlobals();
     }
 }
