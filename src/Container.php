@@ -31,6 +31,21 @@ class Container implements ContainerInterface
     }
 
     /**
+     * Check if a service exists inside the container.
+     *
+     * @param string $name        The name to give to the service for reference.
+     *
+     * @throws ServiceNotFoundException
+     *
+     * @return Bool    True if service exists, false otherwise.
+     */
+    public function serviceExists(string $service)
+    {
+        if(!$this->hasService($service))
+            throw new ServiceNotFoundException("Service: [$name] could not be found.");
+    }
+
+    /**
      * Get the underlying/base instance of the service by calling its
      * get() method.
      *
@@ -42,8 +57,7 @@ class Container implements ContainerInterface
      */
     public function getBaseServiceInstance(string $name) : mixed
     {
-        if(!$this->hasService($name))
-            throw new ServiceNotFoundException("Service: [$name] could not be found.");
+        $this->serviceExists($name);
 
         return (new $this->services[$name])->get();
     }
@@ -59,9 +73,8 @@ class Container implements ContainerInterface
      */
     public function getServiceInstance(string $name) : Service
     {
-        if(!$this->hasService($name))
-            throw new ServiceNotFoundException("Service: [$name] could not be found.");
-        
+        $this->serviceExists($name);
+
         return new $this->services[$name];
     }
 
