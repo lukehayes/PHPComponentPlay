@@ -39,17 +39,6 @@ class App
         return static::$container;
     }
 
-
-    /**
-    * Get the string name of a service.
-    *
-    * @return string.
-    */
-    public static function getServiceName(string $service)
-    {
-        return static::container()->get($service);
-    }
-
     /**
     * Get a service from the container.
     *

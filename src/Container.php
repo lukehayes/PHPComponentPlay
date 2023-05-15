@@ -46,23 +46,6 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Get the underlying/base instance of the service by calling its
-     * get() method.
-     *
-     * @param string $name The name of the service to retrieve from the container.
-     *
-     * @throws ServiceNotFoundException.
-     *
-     * @return mixed.
-     */
-    public function getBaseServiceInstance(string $name) : mixed
-    {
-        $this->serviceExists($name);
-
-        return (new $this->services[$name])->get();
-    }
-
-    /**
      * Get a new instance of a service from the container.
      *
      * @param string $name The name of the service to retrieve from the container.
