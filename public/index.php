@@ -10,6 +10,7 @@ use App\Controllers\TestController;
 use App\App;
 use App\Container;
 use App\Service\TwigService as Twig;
+use App\Service\DatabaseService as DB;
 
 // -------------------------------------------------
 // Setup 
@@ -19,6 +20,7 @@ use App\Service\TwigService as Twig;
 $container = new Container();
 $app  = App::setContainer($container);
 $twig = $container->getServiceInstance(Twig::class);
+$db   = $container->getServiceInstance(DB::class);
 
 // -------------------------------------------------
 // Routing 
