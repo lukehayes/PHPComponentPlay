@@ -11,7 +11,7 @@ class DatabaseService extends Service
 
     public function __construct()
     {
-		$this->service = new SQLiteDatabase("db");
+		    $this->service = new SQLiteDatabase("db");
     }
 
     /**
