@@ -105,10 +105,10 @@ class Container implements ContainerInterface
     {
         if(array_key_exists($id, $this->services))
         {
-			if(isset($this->services[$id]))
-			{
-            	return $this->services[$id];
-			}
+            if(isset($this->services[$id]))
+            {
+                return $this->services[$id];
+            }
         }else
         {
             throw new ServiceNotFoundException("Service: [$id] could not be found.");
