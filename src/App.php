@@ -49,7 +49,7 @@ class App
     */
     public static function get(string $service)
     {
-        return static::container()->getBaseServiceObject($service);
+        return static::container()->get($service);
     }
 }
 
