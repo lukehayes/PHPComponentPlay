@@ -3,6 +3,7 @@ namespace App;
 
 use App\Container;
 use App\Service\TwigService;
+use App\Service\DatabaseService;
 
 class App
 {
