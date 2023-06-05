@@ -38,7 +38,7 @@ class Router
      */
     public function get(Route $route) : bool
     {
-        if(array_key_exists($route->getName(), $this->routes))
+        if(array_key_exists($route->getName(), $this->routes['GET']))
             return false;
 
         $this->routes['GET'][$route->getName()] = $route;
