@@ -15,6 +15,16 @@ class Route
     /**
      * @var $name    The name assoicated with the route. */
     private $name       = NULL;
+     * @var string|null The path of the route. */
+    private $path;
+
+    /** @var string|null The action of the route. */
+    private $action;
+    /** @var string|null The controller of the route. */
+    private $controller;
+
+    /** @var string|null The name of the route. */
+    private $name;
 
     /**
      * Constructor.
