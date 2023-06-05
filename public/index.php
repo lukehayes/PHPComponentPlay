@@ -11,6 +11,19 @@ use App\App;
 use App\Container;
 use App\Service\TwigService as Twig;
 use App\Service\DatabaseService as DB;
+use App\Routing\Router;
+use App\Routing\Route;
+
+$router = new Router();
+$route = new Route('test', '/test', 'CONTROLLER', 'ACTION');
+
+$router->get($route);
+$router->get(new Route('home','/', 'TestController', 'index'));
+
+dump($router->dispatch());
+dd($router->getRoutes());
+
+
 
 // -------------------------------------------------
 // Setup 
@@ -19,8 +32,6 @@ use App\Service\DatabaseService as DB;
 // -------------------------------------------------
 $container = new Container();
 $app  = App::setContainer($container);
-$twig = $container->getServiceInstance(Twig::class);
-$db   = $container->getServiceInstance(DB::class);
 
 // -------------------------------------------------
 // Routing 
@@ -45,6 +56,7 @@ if($method === "GET")
             break;
         default:
             $response = new Response("Error, 404.", 404);
+            dump($response);
             $response->send();
             break;
     }
