@@ -14,17 +14,6 @@ class Router
 
     public function __construct()
     {
-        $this->setDefaultRoutes();
-    }
-
-    /**
-     * Set the array of available default routes.
-     * Called internally.
-     *
-     * @return void.
-     */
-    private function setDefaultRoutes()
-    {
         $this->routes['GET'] = [];
         $this->routes['POST'] = [];
     }

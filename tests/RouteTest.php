@@ -19,5 +19,4 @@ final class RouteTest  extends TestCase
         $this->assertEquals($this->route->getController(), 'TestController');
         $this->assertEquals($this->route->getAction(), 'TestAction');
     }
-
 }
