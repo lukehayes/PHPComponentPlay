@@ -4,17 +4,6 @@ namespace App\Routing;
 class Route 
 {
     /**
-     * @var $path    The path of the route. */
-    private $path       = NULL;
-    /**
-     * @var $action    The action of the route. */
-    private $action     = NULL;
-    /**
-     * @var $controller    The controller of the route. */
-    private $controller = NULL;
-    /**
-     * @var $name    The name assoicated with the route. */
-    private $name       = NULL;
      * @var string|null The path of the route. */
     private $path;
 
