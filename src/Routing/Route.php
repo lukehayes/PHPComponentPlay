@@ -1,6 +1,11 @@
 <?php
 namespace App\Routing;
 
+/**
+ * App\Routing\Route is a class for representing an endpoint inside the application.
+ *
+ * @example $route = new Route('home','/', 'HomeController', 'index');
+ */
 class Route 
 {
     /**
@@ -9,6 +14,7 @@ class Route
 
     /** @var string|null The action of the route. */
     private $action;
+
     /** @var string|null The controller of the route. */
     private $controller;
 
