@@ -29,6 +29,20 @@ class Router
     }
 
     /**
+     * Check to see if there is an available route for the current URI.
+     *
+     * @return bool
+     */
+    public function findRoute() : bool
+    {
+        $uri    = $this->request->server->get('REQUEST_URI');
+        $method = $this->request->server->get('REQUEST_METHOD');
+        $routes = $this->routes['GET'];
+
+        return array_key_exists($uri, $routes) ? true : false;
+    }
+
+    /**
      * Add a GET route to the router. If the key already
      * exists, then false is returned.
      *
