@@ -55,11 +55,11 @@ class Router
      */
     public function get(Route $route) : bool
     {
-        if(array_key_exists($route->getName(), $this->routes['GET']))
+        if(array_key_exists($route->getPath(), $this->routes['GET']))
             return false;
 
-        $this->routes['GET'][$route->getName()] = $route;
-        return true;
+        $this->routes['GET'][$route->getPath()] = $route;
+            return true;
     }
 
 }
