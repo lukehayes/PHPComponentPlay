@@ -17,7 +17,6 @@ final class RouterTest  extends TestCase
         $this->testRoute = new Route('home', '/', 'TestController', 'TestAction');
 
         $this->router->get($this->testRoute);
-        dump($this->router);
     }
 
     public function testCanAddGetRoute()
