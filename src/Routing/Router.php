@@ -2,20 +2,23 @@
 namespace App\Routing;
 
 use App\Routing\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class Router
 {
-    /**
-     * A multi dimensional array for all of the routes
-     * available to the application.
-     */
+    /** @var $routes */
     private array|null $routes = null;
+
+    /** @var $request */
+    private Request $request;
 
     public function __construct()
     {
         $this->routes['GET'] = [];
         $this->routes['POST'] = [];
+
+        $this->request = Request::createFromGlobals();
     }
 
     /**
