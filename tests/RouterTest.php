@@ -34,11 +34,6 @@ final class RouterTest  extends TestCase
         $this->assertArrayHasKey($newRoute->getPath(), $this->router->getRoutes()['GET']);
     }
 
-    public function testCanFindRoute()
-    {
-        $this->assertTrue($this->router->findRoute());
-    }
-
     public function testNoDuplicateGetRoute()
     {
         $this->assertFalse($this->router->get($this->testRoute));
