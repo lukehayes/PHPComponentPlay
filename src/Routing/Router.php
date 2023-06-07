@@ -47,6 +47,7 @@ class Router
 
     /**
      * Check if a route is available to the application and then load it.
+     * If the route is not available then return a 404.
      *
      * @return void.
      */
@@ -59,8 +60,9 @@ class Router
         if($this->routeAvailable())
         {
             $routeObject = $this->routes[$method][$uri];
-            $controller = new ($routeObject->getController());
-            $action = $routeObject->getAction();
+            $controller  = new ($routeObject->getController());
+            $action      = $routeObject->getAction();
+
             $controller->$action(
                 $this->request
             );
@@ -70,6 +72,27 @@ class Router
             $response = new Response('No Route Found', Response::HTTP_NOT_FOUND);
             $response->send();
         }
+    }
+
+    /**
+     * Add a new Route object to the application. The default method is 'GET'
+     * but 'POST' and be used instead.
+     *
+     * @param Route $route.
+     * @param string $method.
+     *
+     * @return bool.
+     */
+    public function addRoute(Route $route, string $method='GET') : bool
+    {
+        if($method !== 'GET' || !$method !== 'POST')
+            return false;
+
+        if(array_key_exists($route->getPath(), $this->routes[$method]))
+            return false;
+
+        $this->routes[$method][$route->getPath()] = $route;
+            return true;
     }
 
     /**
