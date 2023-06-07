@@ -55,11 +55,30 @@ class Router
      */
     public function get(Route $route) : bool
     {
-        if(array_key_exists($route->getPath(), $this->routes['GET']))
+        $method = 'GET';
+
+        if(array_key_exists($route->getPath(), $this->routes[$method]))
             return false;
 
-        $this->routes['GET'][$route->getPath()] = $route;
+        $this->routes[$method][$route->getPath()] = $route;
             return true;
     }
 
+    /**
+     * Add a POST route to the router. If the key already
+     * exists, then false is returned.
+     *
+     * @param Route $route.
+     *
+     * @return bool.
+     */
+    public function post(Route $route) : bool
+    {
+        $method = 'POST';
+        if(array_key_exists($route->getPath(), $this->routes[$method]))
+            return false;
+
+        $this->routes[$method][$route->getPath()] = $route;
+            return true;
+    }
 }
