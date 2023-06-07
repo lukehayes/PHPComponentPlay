@@ -42,6 +42,6 @@ class View
         $template .= file_get_contents("../templates/$file.php");
         $template .= file_get_contents("../templates/partials/footer.php");
 
-        return new Response($template);
+        return (new Response($template))->send();
     }
 }
