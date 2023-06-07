@@ -3,7 +3,7 @@ namespace App\Routing;
 
 use App\Routing\Route;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\HttpFoundation\Response;
 
 class Router
 {
@@ -36,13 +36,40 @@ class Router
      *
      * @return bool
      */
-    public function findRoute() : bool
+    public function routeAvailable() : bool
     {
         $uri    = $this->request->server->get('REQUEST_URI');
         $method = $this->request->server->get('REQUEST_METHOD');
-        $routes = $this->routes['GET'];
+        $routes = $this->routes[$method];
 
         return array_key_exists($uri, $routes) ? true : false;
+    }
+
+    /**
+     * Check if a route is available to the application and then load it.
+     *
+     * @return void.
+     */
+    public function resolveRoute()
+    {
+        $uri    = $this->request->server->get('REQUEST_URI');
+        $method = $this->request->server->get('REQUEST_METHOD');
+        $routes = $this->routes[$method];
+
+        if($this->routeAvailable())
+        {
+            $routeObject = $this->routes[$method][$uri];
+            $controller = new ($routeObject->getController());
+            $action = $routeObject->getAction();
+            $controller->$action(
+                $this->request
+            );
+
+        }else
+        {
+            $response = new Response('No Route Found', Response::HTTP_NOT_FOUND);
+            $response->send();
+        }
     }
 
     /**
