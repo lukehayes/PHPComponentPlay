@@ -15,18 +15,13 @@ use App\Routing\Router;
 use App\Routing\Route;
 
 $router = new Router();
-$route = new Route('test', '/test', 'CONTROLLER', 'ACTION');
+$router->get(new Route('home','/', TestController::class, 'index'));
+$router->get(new Route('login','/login', TestController::class, 'login'));
 
-$router->get($route);
-$router->get(new Route('home','/', 'TestController', 'index'));
-
-dump($router->dispatch());
-dd($router->getRoutes());
-
-
+$router->post(new Route('login','/login', TestController::class, 'login'));
 
 // -------------------------------------------------
-// Setup 
+// Setup
 // -------------------------------------------------
 //
 // -------------------------------------------------
@@ -38,31 +33,4 @@ $app  = App::setContainer($container);
 // -------------------------------------------------
 //
 // -------------------------------------------------
-// TODO Implement some kind of dynamic controller/action generation.
-$controller = new TestController();
-
-$path       = $controller->request->getPathInfo();
-$method     = $controller->request->server->get('REQUEST_METHOD');
-
-if($method === "GET")
-{
-    switch($path)
-    {
-        case "/":
-            $controller->index()->send();
-            break;
-        case "/login":
-            $controller->other()->send();
-            break;
-        default:
-            $response = new Response("Error, 404.", 404);
-            dump($response);
-            $response->send();
-            break;
-    }
-}else 
-{
-    // TODO Implement Authentication, validation etc.
-    dump($controller->request);
-    dd("Revieved POST request. Dying.");
-}
+$router->resolveRoute();
