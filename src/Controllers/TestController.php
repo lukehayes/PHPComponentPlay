@@ -8,18 +8,24 @@ use App\View;
 
 class TestController extends BaseController
 {
-  public function __construct()
-  {
-    parent::__construct();
-  }
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
-  public function index() : Response
-  {
-    return View::load("home");
-  }
+    public function index() : Response
+    {
+        return View::load("home");
+    }
 
-  public function other() : Response
-  {
-    return View::load("form");
-  }
+    public function login(Request $request) : Response
+    {
+        if($request->getMethod() == 'GET')
+        {
+            return View::load("form");
+        }else
+        {
+            dd($request->request->all());
+        }
+    }
 }
