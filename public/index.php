@@ -14,23 +14,22 @@ use App\Service\DatabaseService as DB;
 use App\Routing\Router;
 use App\Routing\Route;
 
-$router = new Router();
-$router->get(new Route('home','/', TestController::class, 'index'));
-$router->get(new Route('login','/login', TestController::class, 'login'));
-
-$router->post(new Route('login','/login', TestController::class, 'login'));
-
 // -------------------------------------------------
 // Setup
-// -------------------------------------------------
-//
 // -------------------------------------------------
 $container = new Container();
 $app  = App::setContainer($container);
 
 // -------------------------------------------------
-// Routing 
+// Add Routes
 // -------------------------------------------------
-//
+$router = new Router();
+$router->get(new Route('home','/', TestController::class, 'index'));
+$router->get(new Route('login','/login', TestController::class, 'login'));
+$router->post(new Route('login','/login', TestController::class, 'login'));
+
+
+// -------------------------------------------------
+// Routing 
 // -------------------------------------------------
 $router->resolveRoute();
