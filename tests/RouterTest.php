@@ -26,6 +26,11 @@ final class RouterTest  extends TestCase
         $this->assertFalse($this->router->hasNamedRoute('notset'));
     }
 
+    public function testCanGetNamedRoute()
+    {
+        // TODO Write test for getting the named route.
+    }
+
     public function testCanAddGetRoute()
     {
         $newRoute = new Route('other', '/other', 'OtherController', 'OtherAction');

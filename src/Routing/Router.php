@@ -133,6 +133,21 @@ class Router
     }
 
     /**
+     * Does a route with a specific name exist?
+     *
+     * @param string $name.
+     *
+     * @return ?Array
+     */
+    public function getNamedRoute(string $name) : ?Array
+    {
+        return array_filter($this->routes['GET'], function($route) use($name)
+        {
+            return $route->getName() == $name;
+        });
+    }
+
+    /**
      * Add a POST route to the router. If the key already
      * exists, then false is returned.
      *
