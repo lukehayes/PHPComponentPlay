@@ -2,7 +2,7 @@
 namespace App\Service;
 
 use App\Service\Service;
-use App\Router;
+use App\Routing\Router;
 
 class RouterService extends Service
 {
