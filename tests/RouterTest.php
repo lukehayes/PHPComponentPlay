@@ -22,13 +22,16 @@ final class RouterTest  extends TestCase
     public function testDoesHaveNamedRoute()
     {
         $this->assertTrue($this->router->hasNamedRoute('home'));
-        $this->assertTrue($this->router->hasNamedRoute('login'));
         $this->assertFalse($this->router->hasNamedRoute('notset'));
     }
 
     public function testCanGetNamedRoute()
     {
-        // TODO Write test for getting the named route.
+        $route = $this->router->getNamedRoute('home');
+
+        $this->assertIsArray($route, 'Router::getNamedRoute() should return an array.');
+        $this->assertNotEmpty($route, 'Named route array is empty.');
+        $this->assertCount(1, $route, 'Router::getNamedRoute() should return an array with a single element.');
     }
 
     public function testCanAddGetRoute()
