@@ -6,10 +6,6 @@
         }
     },
     "authors": [
-        {
-            "name": "Luke Hayes",
-            "email": "lukepurplehayes@gmail.com"
-        }
     ],
     "require": {
         "symfony/http-foundation": "^6.2",
