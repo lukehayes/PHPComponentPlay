@@ -6,7 +6,7 @@ namespace App\Routing;
  *
  * @example $route = new Route('home','/', 'HomeController', 'index');
  */
-class Route 
+class Route
 {
     /**
      * @var string|null The path of the route. */

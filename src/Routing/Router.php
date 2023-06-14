@@ -115,6 +115,24 @@ class Router
     }
 
     /**
+     * Does a route with a specific name exist?
+     *
+     * @param string $name.
+     *
+     *@return bool.
+     */
+    public function hasNamedRoute(string $name) : bool
+    {
+        // TODO Currently only checks GET routes. Needs to add
+        // other methods like POST also.
+
+        return !!array_filter($this->routes['GET'], function($route) use($name)
+        {
+            return $route->getName() == $name;
+        });
+    }
+
+    /**
      * Add a POST route to the router. If the key already
      * exists, then false is returned.
      *
