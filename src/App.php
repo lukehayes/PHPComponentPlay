@@ -2,6 +2,7 @@
 namespace App;
 
 use App\Container;
+use App\Service\Service;
 
 
 class App
@@ -21,7 +22,6 @@ class App
         static::$container = $container;
     }
 
-
     /**
     * Get an instance of the service container.
     *
@@ -33,14 +33,13 @@ class App
     }
 
     /**
-    * Return the full namespace of the service ready
-    * to be instantiated.
+    * Return the full namespace of the service ready to be instantiated.
     *
     * @param string $service.
     *
     * @return string;
     */
-    public static function get(string $service)
+    public static function get(string $service) : string
     {
         return static::container()->get($service);
     }
@@ -52,7 +51,7 @@ class App
     *
     * @return App\Service\Service;
     */
-    public static function getInstance(string $service)
+    public static function getInstance(string $service) : Service
     {
         return static::container()->getInstance($service);
     }
