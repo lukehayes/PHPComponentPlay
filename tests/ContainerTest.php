@@ -26,7 +26,7 @@ final class ContainerTest extends TestCase
             "Instance of " . \App\Service\DatabaseService::class . " not found"
         );
 
-        $this->assertArrayNotHasKey(
+        $this->assertArrayHasKey(
             \App\Service\RouterService::class,
             $this->container->services(),
             "Instance of " . \App\Service\DatabaseService::class . " not found"
