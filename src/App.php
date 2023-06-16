@@ -2,8 +2,7 @@
 namespace App;
 
 use App\Container;
-use App\Service\TwigService;
-use App\Service\DatabaseService;
+
 
 class App
 {
@@ -20,13 +19,6 @@ class App
     public static function setContainer(Container $container)
     {
         static::$container = $container;
-
-        // TODO Refactor this logic out into another function/
-        // object when it gets a little larger.
-        // 
-        // Add default services here.
-        static::$container->addService(TwigService::class);
-        static::$container->addService(DatabaseService::class);
     }
 
 

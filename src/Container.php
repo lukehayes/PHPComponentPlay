@@ -6,6 +6,9 @@ use App\Service\ServiceNotFoundException;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
+use App\Service\TwigService;
+use App\Service\DatabaseService;
+
 /**
  * A very simple/basic service container
  */
@@ -16,6 +19,16 @@ class Container implements ContainerInterface
      */
     private $services = [];
 
+    public function __construct()
+    {
+        $this->setDefaultServices();
+    }
+
+    private function setDefaultServices()
+    {
+        $this->addService(TwigService::class);
+        $this->addService(DatabaseService::class);
+    }
 
     /**
      * Add a service to the container. If the service already exists,
