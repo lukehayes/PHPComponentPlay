@@ -126,10 +126,7 @@ class Router
         // TODO Currently only checks GET routes. Needs to add
         // other methods like POST also.
 
-        return !!array_filter($this->routes['GET'], function($route) use($name)
-        {
-            return $route->getName() == $name;
-        });
+        return !!$this->getNamedRoute($name);
     }
 
     /**
