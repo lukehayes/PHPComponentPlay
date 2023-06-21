@@ -9,6 +9,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use App\Service\TwigService;
 use App\Service\DatabaseService;
 use App\Service\RouterService;
+use App\Service\DoctrineService;
 
 
 /**
@@ -31,6 +32,7 @@ class Container implements ContainerInterface
         $this->addService(TwigService::class);
         $this->addService(DatabaseService::class);
         $this->addService(RouterService::class);
+        $this->addService(DoctrineService::class);
     }
 
     /**
