@@ -2,7 +2,6 @@
 namespace App\Service;
 
 use App\Service\Service;
-use App\DB\Database;
 use App\DB\SQLiteDatabase;
 
 class DatabaseService extends Service
@@ -11,7 +10,7 @@ class DatabaseService extends Service
 
     public function __construct()
     {
-		    $this->service = new SQLiteDatabase("db");
+		$this->service = new SQLiteDatabase("sqlite.db");
     }
 
     /**
