@@ -2,7 +2,6 @@
 namespace App\Service;
 
 use Doctrine\DBAL\DriverManager;
-use Doctrine\DBAL\Tools\DsnParser;
 
 
 class DoctrineService extends Service
@@ -11,16 +10,10 @@ class DoctrineService extends Service
 
     public function __construct()
     {
-
         $connectionParams = [
-            'dbname' => 'db.db',
             'driver' => 'sqlite3',
-            'path' => 'public'
+            'path' => 'db.db'
         ];
-
-        // $dsnParser = new DsnParser();
-        // $connectionParams = $dsnParser
-        // ->parse('sqlite3://doctrine.db');
 
         $this->service = DriverManager::getConnection($connectionParams);
     }
