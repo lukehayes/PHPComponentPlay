@@ -4,21 +4,16 @@
 
 require '../vendor/autoload.php';
 
-use Symfony\Component\HttpFoundation\Response;
 use App\Controllers\TestController;
 
 use App\App;
-use App\Container;
-use App\Service\TwigService as Twig;
-use App\Service\DatabaseService as DB;
-use App\Routing\Router;
 use App\Routing\Route;
 
 // -------------------------------------------------
 // Setup
 // -------------------------------------------------
-$container = new Container();
-$app  = App::setContainer($container);
+$app = new App();
+App::setContainer(new \App\Container());
 
 // -------------------------------------------------
 // Add Routes
