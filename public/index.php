@@ -18,7 +18,10 @@ App::setContainer(new \App\Container());
 // -------------------------------------------------
 // Add Routes
 // -------------------------------------------------
-$router = new Router();
+$router = App::get(\App\Service\RouterService::class);
+
+// TODO Implmement support for different kinds of actions
+// like classes, callback functions etc.
 $router->get(new Route('home','/', TestController::class, 'index'));
 $router->get(new Route('login','/login', TestController::class, 'login'));
 $router->post(new Route('login','/login', TestController::class, 'login'));
