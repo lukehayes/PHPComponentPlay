@@ -33,18 +33,6 @@ class App
     }
 
     /**
-    * Return the full namespace of the service ready to be instantiated.
-    *
-    * @param string $service.
-    *
-    * @return string;
-    */
-    public static function get(string $service) : string
-    {
-        return static::container()->get($service);
-    }
-
-    /**
     * Get an new instance of a service from the container.
     *
     * @param string $service.
@@ -54,6 +42,18 @@ class App
     public static function getInstance(string $service) : Service
     {
         return static::container()->getInstance($service);
+    }
+
+    /**
+    * Return a new instance of the underlying object that the service holds.
+    *
+    * @param string $service.
+    *
+    * @return string;
+    */
+    public static function get(string $service) : Object
+    {
+        return static::getInstance($service)->get();
     }
 }
 
