@@ -39,7 +39,7 @@ class App
     *
     * @return App\Service\Service;
     */
-    public static function getInstance(string $service) : Service
+    public static function getServiceInstance(string $service) : Service
     {
         return static::container()->getInstance($service);
     }
@@ -53,7 +53,7 @@ class App
     */
     public static function get(string $service) : Object
     {
-        return static::getInstance($service)->get();
+        return static::getServiceInstance($service)->get();
     }
 }
 
