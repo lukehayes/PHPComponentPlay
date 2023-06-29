@@ -23,10 +23,10 @@ class Container implements ContainerInterface
 
     private function setDefaultServices()
     {
-        $this->addService(\App\Service\TwigService::class);
-        $this->addService(\App\Service\DatabaseService::class);
-        $this->addService(\App\Service\RouterService::class);
-        $this->addService(\App\Service\DoctrineService::class);
+        $this->addService('Twig',     \App\Service\TwigService::class);
+        $this->addService('DB',       \App\Service\DatabaseService::class);
+        $this->addService('Router',   \App\Service\RouterService::class);
+        $this->addService('Doctrine', \App\Service\DoctrineService::class);
     }
 
     /**
@@ -35,11 +35,13 @@ class Container implements ContainerInterface
      *
      * @param string $name        The name to give to the service for reference.
      *
+     * @param string $service:    The complete service namespace.
+     *
      * @return void.
      */
-    public function addService(string $name) : void 
+    public function addService(string $name, string $service) : void 
     {
-        $this->services[$name] = $name;
+        $this->services[$name] = $service;
     }
 
     /**
