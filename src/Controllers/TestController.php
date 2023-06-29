@@ -13,9 +13,11 @@ class TestController extends BaseController
         parent::__construct();
     }
 
-    public function index() : Response
+    public function index()
     {
-        return View::load("home");
+        // TODO Implement a cleaner way to return view templates.
+        $twig = \App\App::get(\App\Service\TwigService::class);
+        $twig->display('home.php');
     }
 
     public function login(Request $request) : Response
