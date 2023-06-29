@@ -6,14 +6,8 @@ use App\Service\ServiceNotFoundException;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
-use App\Service\TwigService;
-use App\Service\DatabaseService;
-use App\Service\RouterService;
-use App\Service\DoctrineService;
-
-
 /**
- * A very simple/basic service container
+ * A very simple/basic service container.
  */
 class Container implements ContainerInterface
 {
@@ -29,10 +23,10 @@ class Container implements ContainerInterface
 
     private function setDefaultServices()
     {
-        $this->addService(TwigService::class);
-        $this->addService(DatabaseService::class);
-        $this->addService(RouterService::class);
-        $this->addService(DoctrineService::class);
+        $this->addService(\App\Service\TwigService::class);
+        $this->addService(\App\Service\DatabaseService::class);
+        $this->addService(\App\Service\RouterService::class);
+        $this->addService(\App\Service\DoctrineService::class);
     }
 
     /**
