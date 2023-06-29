@@ -53,10 +53,10 @@ class Container implements ContainerInterface
      */
     public function getInstance(string $name) : Service
     {
-        if(!$this->hasService($name))
+        if(!$this->has($name))
             throw new ServiceNotFoundException("$name service could not be found.");
 
-        return new $this->services[$name];
+        return new ($this->get($name));
     }
 
 
@@ -99,7 +99,7 @@ class Container implements ContainerInterface
      *
      * @return mixed Entry.
      */
-    public function get(string $id)
+    public function get(string $id) : mixed
     {
         if(array_key_exists($id, $this->services))
         {
