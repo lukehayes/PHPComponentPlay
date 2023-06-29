@@ -18,7 +18,7 @@ App::setContainer(new \App\Container());
 // -------------------------------------------------
 // Add Routes
 // -------------------------------------------------
-$router = App::get(\App\Service\RouterService::class);
+$router = App::get('Router');
 
 // TODO Implmement support for different kinds of actions
 // like classes, callback functions etc.
