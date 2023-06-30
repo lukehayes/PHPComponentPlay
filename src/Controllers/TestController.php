@@ -16,7 +16,7 @@ class TestController extends BaseController
     public function index()
     {
         // TODO Implement a cleaner way to return view templates.
-        $twig = \App\App::get(\App\Service\TwigService::class);
+        $twig = \App\App::get('Twig');
         $twig->display('home.php');
     }
 
