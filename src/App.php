@@ -47,7 +47,9 @@ class App
     /**
     * Return a new instance of the underlying object that the service holds.
     *
-    * @param string $service.
+    * @param string $service.    The name used to define a service in the container.
+    *                            e.g use 'Container' to get a service container
+    *                            and 'Twig' to get the instance of Twig.
     *
     * @return string;
     */
