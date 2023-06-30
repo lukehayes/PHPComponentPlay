@@ -15,37 +15,41 @@ final class ContainerTest extends TestCase
     public function testHasDefaultServices(): void
     {
         $this->assertArrayHasKey(
-            \App\Service\TwigService::class,
+            'Twig',
             $this->container->services(),
             "Instance of " . \App\Service\TwigService::class . " not found"
         );
 
         $this->assertArrayHasKey(
-            \App\Service\DatabaseService::class,
+            'DB',
             $this->container->services(),
             "Instance of " . \App\Service\DatabaseService::class . " not found"
         );
 
         $this->assertArrayHasKey(
-            \App\Service\RouterService::class,
+            'Router',
             $this->container->services(),
-            "Instance of " . \App\Service\DatabaseService::class . " not found"
+            "Instance of " . \App\Service\RouterService::class . " not found"
+        );
+
+        $this->assertArrayHasKey(
+            'Doctrine',
+            $this->container->services(),
+            "Instance of " . \App\Service\Doctrine::class . " not found"
         );
     }
 
     public function testCanGetService()
     {
-        $dbClass = \App\Service\DatabaseService::class;
-
         $this->assertTrue(
-            $this->container->has($dbClass),
-            "Instance of " . $dbClass. " not found"
+            $this->container->has('Twig'),
+            "Instance of " . 'Twig'. " not found"
         );
 
         $this->assertInstanceOf(
-            $dbClass,
-            $this->container->getInstance($dbClass),
-            "Instance of " . $dbClass. " not found"
+            \App\Service\TwigService::class,
+            $this->container->getInstance('Twig'),
+            "Instance of " . 'Twig'. " not found"
         );
     }
 }

@@ -15,13 +15,9 @@ final class AppTest extends TestCase
 
     public function testAppCanGetService()
     {
-        $this->assertIsString(
-            $this->app->get(\App\Service\RouterService::class)
-        );
-
         $this->assertInstanceOf(
             \App\Service\RouterService::class,
-            $this->app->getInstance(\App\Service\RouterService::class)
+            App::getServiceInstance('Router')
         );
     }
     

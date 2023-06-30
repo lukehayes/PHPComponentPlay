@@ -4,7 +4,6 @@ use PHPUnit\Framework\TestCase;
 use App\App;
 use App\Container;
 use App\DB\Query;
-use App\DB\Database;
 
 /**
  * Tests for \App\DB\Query class, not the class that will use
@@ -23,7 +22,7 @@ final class QueryTest extends TestCase
         $this->container = new Container();
         $this->app::setContainer($this->container);
 
-        $this->db = $this->container->getInstance(\App\Service\DatabaseService::class);
+        $this->db = $this->container->getInstance('DB');
         $this->query = new Query($this->db->get());
     }
 
