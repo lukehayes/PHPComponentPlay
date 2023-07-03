@@ -161,4 +161,24 @@ class Router
         $this->routes[$method][$route->getPath()] = $route;
             return true;
     }
+
+    /**
+    * Is the current REQUEST_METHOD equal to GET?
+    *
+    * @return bool.
+    */
+    public function isGet() : bool
+    {
+        return $this->request->server->get('REQUEST_METHOD') === 'GET';
+    }
+
+    /**
+    * Is the current REQUEST_METHOD equal to POST?
+    *
+    * @return bool.
+    */
+    public function isPost() : bool
+    {
+        return $this->request->server->get('REQUEST_METHOD') === 'POST';
+    }
 }
