@@ -27,6 +27,21 @@ class TestController extends BaseController
             return View::load("form");
         }else
         {
+            /** TODO Implement authentication.
+            *
+            * Get input data from form.
+            * Check that the data fits the needed format (validation).
+            * Filter and remove unwanted characters etc.
+            * Check if the username is available in the database.
+            * Check if the password is equal to the password in the database.
+            *
+            * If successful:
+            * Create a new user session with needed email/id etc.
+            *     - send user to the dashboard.
+            *
+            * If failiure:
+            *   Send user back to login form with validation errors.
+            */
             dd($request->request->all());
         }
     }
