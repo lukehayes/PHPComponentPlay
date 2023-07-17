@@ -13,12 +13,18 @@ class Router
     /** @var $request */
     private Request $request;
 
+    /** @var $middleware */
+    private $middleware = [];
+
     public function __construct()
     {
         $this->routes['GET'] = [];
         $this->routes['POST'] = [];
 
         $this->request = Request::createFromGlobals();
+
+
+        $this->middleware['Validator'] = new \App\Middleware\ValidatorMiddleware();
     }
 
     /**
@@ -59,6 +65,12 @@ class Router
 
         if($this->routeAvailable())
         {
+            // Run Middleware.
+            foreach($this->middleware as $middleware)
+            {
+                $middleware->process($this->request);
+            }
+
             $routeObject = $this->routes[$method][$uri];
             $controller  = new ($routeObject->getController());
             $action      = $routeObject->getAction();
