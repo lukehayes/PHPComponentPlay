@@ -4,7 +4,9 @@ namespace App;
 use App\Container;
 use App\Service\Service;
 
-
+/**
+ * App class acts as a static interface for accessing framework functionality.
+ */
 class App
 {
 
