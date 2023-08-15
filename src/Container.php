@@ -41,7 +41,8 @@ class Container implements ContainerInterface
      */
     public function addService(string $name, string $service) : void 
     {
-        $this->services[$name] = $service;
+
+        $this->services[ucfirst($name)] = $service;
     }
 
     /**
@@ -55,6 +56,8 @@ class Container implements ContainerInterface
      */
     public function getInstance(string $name) : Service
     {
+        $name = ucfirst($name);
+
         if(!$this->has($name))
             throw new ServiceNotFoundException("$name service could not be found.");
 
