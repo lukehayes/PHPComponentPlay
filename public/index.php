@@ -20,12 +20,13 @@ App::setContainer(new \App\Container());
 // -------------------------------------------------
 $router = App::get('Router');
 
+
 // TODO Implmement support for different kinds of actions
 // like classes, callback functions etc.
-$router->get(new Route('home','/', TestController::class, 'index'));
-$router->get(new Route('login','/login', TestController::class, 'login'));
-$router->post(new Route('login','/login', TestController::class, 'login'));
-
+$router->get(new Route('home','/', TestController::class, 'index', 'GET'));
+$router->get(new Route('contact','/contact', TestController::class, 'other', 'GET'));
+$router->get(new Route('login','/login', TestController::class, 'login', 'GET'));
+$router->post(new Route('login','/login', TestController::class, 'login', 'POST'));
 
 // -------------------------------------------------
 // Routing 

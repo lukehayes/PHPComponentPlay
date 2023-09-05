@@ -21,6 +21,9 @@ class Route
     /** @var string|null The name of the route. */
     private $name;
 
+    /** @var string|null */
+    private $methods;
+
     /**
      * Constructor.
      *
@@ -28,13 +31,16 @@ class Route
      * @param string $path          The path of the route.
      * @param string $controller    The path of the route.
      * @param string $action        The action of the route.
+     * @param string $methods       The methods that this route applies to
+     *                              delimited by a '|' character.
      */
-    public function __construct($name, $path, $controller, $action)
+    public function __construct($name, $path, $controller, $action, $methods)
     {
         $this->name       = $name;
         $this->path       = $path;
         $this->action     = $action;
         $this->controller = $controller;
+        $this->methods    = explode('|', $methods);
     }
 
     /**
