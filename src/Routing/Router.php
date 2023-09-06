@@ -7,23 +7,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Router
 {
-    /** @var $routes */
+    /** @var array|null $routes */
     private array|null $routes = null;
 
-    /** @var $request */
+    /** @var Request $requet */
     private Request $request;
-
-    /** @var $middleware */
-    private $middleware = [];
 
     public function __construct()
     {
         $this->routes['GET']  = [];
         $this->routes['POST'] = [];
-        $this->middleware     = [];
-
-        dd(1);
-
         $this->request = Request::createFromGlobals();
     }
 
