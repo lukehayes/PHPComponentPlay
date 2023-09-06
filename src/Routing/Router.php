@@ -4,6 +4,7 @@ namespace App\Routing;
 use App\Routing\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class Router
 {
@@ -55,24 +56,37 @@ class Router
         $uri    = $this->request->server->get('REQUEST_URI');
         $method = $this->request->server->get('REQUEST_METHOD');
 
+
         // TODO Routing only really works for controllers and actions.
         //      Need to implement routing for APIs that return JSON. 
-
-        if($this->routeAvailable())
+        //
+        //      Implement callback etc.
+        if(str_contains($uri, 'api'))
         {
-            $routeObject = $this->routes[$method][$uri];
-            $controller  = new ($routeObject->getController());
-            $action      = $routeObject->getAction();
-
-            $controller->$action(
-                $this->request
-            );
-
+            // TODO Set JSON headers etc.
+            $response = new JsonResponse("API ENDPOINT");
+            $response->setData(['a'=>1, 'b'=> 2]);
+            $response->send();
         }else
         {
-            $response = new Response('No Route Found', Response::HTTP_NOT_FOUND);
-            $response->send();
+            if($this->routeAvailable())
+            {
+                $routeObject = $this->routes[$method][$uri];
+                $controller  = new ($routeObject->getController());
+                $action      = $routeObject->getAction();
+
+                $controller->$action(
+                    $this->request
+                );
+
+            }else
+            {
+                $response = new Response('No Route Found', Response::HTTP_NOT_FOUND);
+                $response->send();
+            }
         }
+
+
     }
 
     /**
