@@ -80,27 +80,6 @@ class Router
     }
 
     /**
-     * Add a new Route object to the application. The default method is 'GET'
-     * but 'POST' and be used instead.
-     *
-     * @param Route $route.
-     * @param string $method.
-     *
-     * @return bool.
-     */
-    public function addRoute(Route $route, string $method='GET') : bool
-    {
-        if($method !== 'GET' || !$method !== 'POST')
-            return false;
-
-        if(array_key_exists($route->getPath(), $this->routes[$method]))
-            return false;
-
-        $this->routes[$method][$route->getPath()] = $route;
-            return true;
-    }
-
-    /**
      * Add a GET route to the router. If the key already
      * exists, then false is returned.
      *
