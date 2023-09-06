@@ -55,6 +55,9 @@ class Router
         $uri    = $this->request->server->get('REQUEST_URI');
         $method = $this->request->server->get('REQUEST_METHOD');
 
+        // TODO Routing only really works for controllers and actions.
+        //      Need to implement routing for APIs that return JSON. 
+
         if($this->routeAvailable())
         {
             $routeObject = $this->routes[$method][$uri];
