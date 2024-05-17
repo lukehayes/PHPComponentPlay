@@ -24,7 +24,7 @@ class Container implements ContainerInterface
     private function setDefaultServices()
     {
         $this->addService('Twig',     \App\Service\TwigService::class);
-        $this->addService('DB',       \App\Service\DatabaseService::class);
+        $this->addService('Database', \App\Service\DatabaseService::class);
         $this->addService('Router',   \App\Service\RouterService::class);
         $this->addService('Doctrine', \App\Service\DoctrineService::class);
     }
