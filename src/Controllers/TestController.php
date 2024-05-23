@@ -15,7 +15,7 @@ class TestController extends BaseController
     public function index()
     {
         // TODO Implement a cleaner way to return view templates.
-        $this->twig->display('home.php');
+        $this->twig->display('login/login.php');
     }
 
     public function login(Request $request) 
