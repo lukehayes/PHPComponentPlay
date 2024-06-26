@@ -15,4 +15,5 @@
 
 <body>
 
-<div class="conatainer mx-auto"> 
+<div class="container mx-auto"> 
+par
