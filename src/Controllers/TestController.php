@@ -5,6 +5,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Controllers\BaseController;
 
+use App\Validation\Validator;
+
 class TestController extends BaseController
 {
     public function __construct()
@@ -25,6 +27,7 @@ class TestController extends BaseController
             $this->twig->display('form.php');
         }else
         {
+
             /** TODO Implement authentication.
             *
             * Get input data from form.
@@ -40,7 +43,17 @@ class TestController extends BaseController
             * If failiure:
             *   Send user back to login form with validation errors.
             */
-            dd($request->request->all());
+
+
+            // TODO Build some kind of validation layer.
+            // TODO Filter unwanted characters.
+            $requestData = $request->request->all();
+
+            $username = $requestData['username'];
+            $password = $requestData['password'];
+
+            $username = Validator::validate($username);
+            $password = Validator::validate($password);
         }
     }
 }
