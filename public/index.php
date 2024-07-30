@@ -8,12 +8,20 @@ use App\Controllers\TestController;
 
 use App\App;
 use App\Routing\Route;
+use App\DB\SQLiteDatabase;
+use App\DB\Query;
 
 // -------------------------------------------------
 // Setup
 // -------------------------------------------------
 $app = new App();
 App::setContainer(new \App\Container());
+
+$db = new SQLiteDatabase();
+$q = new Query($db);
+
+dump($q);
+
 
 // -------------------------------------------------
 // Add Routes
