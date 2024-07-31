@@ -55,6 +55,20 @@ class Query
         return ($this->conn->query($query))->fetchAll();
     }
 
+
+    public function selectFromWhere(string $field, string $table, string $where, string $equalTo)
+    {
+
+        $query =  "select ";
+        $query .= "{$field} ";
+
+        $query .= "from {$table} ";
+        $query .= "where {$where} = '${equalTo}'";
+
+        return ($this->conn->query($query))->fetchAll();
+    }
+
+
     /**
      * Get a specific user from the database.
      *
