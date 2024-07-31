@@ -27,6 +27,7 @@ class Container implements ContainerInterface
         $this->addService('Database', \App\Service\DatabaseService::class);
         $this->addService('Router',   \App\Service\RouterService::class);
         $this->addService('Doctrine', \App\Service\DoctrineService::class);
+        $this->addService('App',      \App\Service\AppService::class);
     }
 
     /**
