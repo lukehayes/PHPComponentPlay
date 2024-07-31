@@ -5,6 +5,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Controllers\BaseController;
 
+use App\DB\SQLiteDatabase;
+use App\DB\Query;
+
 use App\Validation\Validator;
 
 class TestController extends BaseController
@@ -20,7 +23,7 @@ class TestController extends BaseController
         $this->twig->display('login/login.php');
     }
 
-    public function login(Request $request) 
+    public function login(Request $request) : bool
     {
         if($request->getMethod() == 'GET')
         {
@@ -49,11 +52,27 @@ class TestController extends BaseController
             // TODO Filter unwanted characters.
             $requestData = $request->request->all();
 
+            $db    = new SQLiteDatabase();
+            $query = new Query($db);
+
             $username = $requestData['username'];
             $password = $requestData['password'];
 
             $username = Validator::validate($username);
             $password = Validator::validate($password);
+
+
+            $user = $query->getUser($username);
+
+            // TODO Complete working authentication.
+            if(password_verify($password, $user->getPasswordHash()))
+            {
+                $user->setAuthenticated();
+                return true;
+            }else
+            {
+                return false;
+            }
         }
     }
 }
