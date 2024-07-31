@@ -15,5 +15,7 @@ create table users(
 
 insert into users (id, username, password)
        values
-            (null, 'developer', 'password'),
-            (null, 'admin', 'password');
+            (null, 'developer', '$2y$10$/i57/d5ALQJqoBXB/AJZSejFk93o4Yr4F2t//XvY3tppxf1Vfhu5O'),
+            (null, 'admin', '$2y$10$/i57/d5ALQJqoBXB/AJZSejFk93o4Yr4F2t//XvY3tppxf1Vfhu5O');
+
+            -- password is 'password' for testing.
