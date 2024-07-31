@@ -18,6 +18,11 @@ class User
         return $this->username;
     }
 
+    public function getPasswordHash() : string
+    {
+        return $this->password;
+    }
+
     public function authenticated() : bool
     {
         return $this->authenticated;
