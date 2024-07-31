@@ -37,4 +37,9 @@ class User
     {
         return !!$this->authenticated;
     }
+
+    public function setAuthenticated()
+    {
+        $this->authenticated = true;
+    }
 }
