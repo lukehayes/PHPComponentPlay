@@ -23,6 +23,11 @@ class User
         return $this->authenticated;
     }
 
+    public function isAuthenticated() : bool
+    {
+        return $this->authenticated;
+    }
+
     public function notAuthenticated() : bool
     {
         return !!$this->authenticated;
