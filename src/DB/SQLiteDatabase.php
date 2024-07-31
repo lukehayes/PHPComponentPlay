@@ -20,7 +20,7 @@ class SQLiteDatabase extends Database
      */
     public function __construct(string $databaseName = "test")
     {
-        $this->db = $databaseName;
+        $this->db = $databaseName . ".db";
         $this->dsn = "sqlite:" . $this->db;
 
         $this->connection = new PDO($this->dsn);
