@@ -26,13 +26,23 @@ class Validator
     private static function sanitize(string $str) : string
     {
         $str = filter_var($str,
-                            FILTER_SANITIZE_URL |
-                            FILTER_DEFAULT);
+                          FILTER_SANITIZE_URL |
+                          FILTER_DEFAULT);
 
         $str = htmlspecialchars($str);
 
         return $str;
     }
 
-
+    /*
+     * Check if a string is empty.
+     *
+     * @param string $str    The string to sanitize.
+     *
+     * @return string    The sanitized string.
+     */
+    private static function isEmpty(string $str) : bool
+    {
+        return empty($str) && !isset($str);
+    }
 }
