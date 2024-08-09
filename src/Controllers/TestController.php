@@ -68,9 +68,13 @@ class TestController extends BaseController
             if(password_verify($password, $user->getPasswordHash()))
             {
                 $user->setAuthenticated();
+
+                // TODO Redirect after authentication has passed.
+
                 return true;
             }else
             {
+                // TODO Redirect to login page.
                 return false;
             }
         }
