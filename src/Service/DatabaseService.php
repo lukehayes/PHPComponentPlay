@@ -3,6 +3,7 @@ namespace App\Service;
 
 use App\Service\Service;
 use App\DB\SQLiteDatabase;
+use App\DB\Database;
 
 class DatabaseService extends Service
 {
@@ -26,9 +27,9 @@ class DatabaseService extends Service
     /**
      * Get the underlying service.
      *
-     * @return Object
+     * @return mixed
      */
-    public function get() : Object
+    public function get() : ?Database
     {
         return $this->service;
     }
