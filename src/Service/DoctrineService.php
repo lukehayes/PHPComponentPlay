@@ -6,9 +6,19 @@ use Doctrine\DBAL\DriverManager;
 
 class DoctrineService extends Service
 {
+    /**
+     * The instance of a service.
+     *
+     * @var Doctrine\DBAL\DriverManager | null
+     */
     private $service = NULL;
 
-    public function __construct()
+    public function __construct() {}
+
+    /**
+     * Initialize the underlying service.
+     */
+    public function boot()
     {
         $connectionParams = [
             'driver' => 'sqlite3',

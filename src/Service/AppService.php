@@ -5,11 +5,21 @@ use App\App;
 
 class AppService extends Service
 {
-    private $service = NULL;
+    /**
+     * The instance of a service.
+     *
+     * @var App\App | null
+     * */
+    private $service = null;
 
-    public function __construct()
+    public function __construct() {}
+
+    /**
+     * Initialize the underlying service.
+     */
+    public function boot()
     {
-		$this->service = new App;
+	    $this->service = new App;
     }
 
     /**

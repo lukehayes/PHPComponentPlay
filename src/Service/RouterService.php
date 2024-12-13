@@ -7,14 +7,22 @@ use App\Routing\Router;
 class RouterService extends Service
 {
     /**
-     * @var $service */
+     * The instance of a service.
+     *
+     * @var Router | null
+     * */
     public ?Router $service = NULL;
 
-    public function __construct()
+    public function __construct() {}
+
+    /**
+     * Initialize the underlying service.
+     */
+    public function boot()
     {
         $this->service = new Router();
-        return $this->service;
     }
+
 
     /**
      * Get the underlying service.

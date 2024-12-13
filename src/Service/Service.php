@@ -7,6 +7,11 @@ namespace App\Service;
 abstract class Service
 {
     /**
+     * Initialize the underlying service.
+     */
+    abstract public function boot();
+
+    /**
      * Get the underlying service.
      */
     abstract public function get() : Object;

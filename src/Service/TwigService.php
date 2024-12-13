@@ -7,10 +7,18 @@ use Twig\Environment;
 
 class TwigService extends Service
 {
+    /**
+     * The instance of a service.
+     *
+     * @var Twig\Environment | null
+     * */
     private $service = NULL;
 
-    public function __construct()
+    public function __construct() {}
+
+    public function boot()
     {
+        // TODO Remove this hard coded template path.
         $loader = new FilesystemLoader(__DIR__ . '/../../templates');
         $this->service = new Environment($loader, ['debug' => 'true']);
         $this->service->addExtension(new \Twig\Extension\DebugExtension);
