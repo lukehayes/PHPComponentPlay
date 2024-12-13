@@ -21,8 +21,12 @@ class Container implements ContainerInterface
         $this->setDefaultServices();
     }
 
+    /**
+     * Set all of the available services that should be available on boot.
+     */
     private function setDefaultServices()
     {
+        // TODO Add ability to add services from configuration file.
         $this->addService('Twig',     \App\Service\TwigService::class);
         $this->addService('Database', \App\Service\DatabaseService::class);
         $this->addService('Router',   \App\Service\RouterService::class);
@@ -42,7 +46,6 @@ class Container implements ContainerInterface
      */
     public function addService(string $name, string $service) : void 
     {
-
         $this->services[ucfirst($name)] = $service;
     }
 
