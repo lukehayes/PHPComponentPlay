@@ -22,7 +22,7 @@ final class QueryTest extends TestCase
         $this->container = new Container();
         $this->app::setContainer($this->container);
 
-        $this->db = $this->container->getInstance('DB');
+        $this->db = $this->container->getInstance('Database');
         $this->query = new Query($this->db->get());
 
         // TODO Write these unit tests.
