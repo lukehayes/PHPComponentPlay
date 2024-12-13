@@ -27,9 +27,9 @@ class RouterService extends Service
     /**
      * Get the underlying service.
      *
-     * @return Object
+     * @return ?Router
      */
-    public function get() : Object
+    public function get() : ?Router
     {
         return $this->service;
     }
