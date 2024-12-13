@@ -16,9 +16,33 @@ class Container implements ContainerInterface
      */
     private $services = [];
 
+    /**
+     * Value is set to true when all services have been initialsed.
+     * @var bool $initialized.
+     */
+    private bool $initialized = false;
+
     public function __construct()
     {
         $this->setDefaultServices();
+    }
+
+    /**
+     * Initialise all of the services defined inside the container.
+     *
+     * @return bool.
+     */
+    public function bootServices()
+    {
+        // TODO Implement a more concrete way of doing this.
+        foreach($this->services as $name => $service)
+        {
+            $instance = new $service;
+            $instance->boot();
+        }
+
+        $this->initialized = true;
+        return $this->initialized;
     }
 
     /**
