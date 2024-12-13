@@ -9,7 +9,11 @@ use App\Service\Service;
  */
 class App
 {
-
+    /**
+     * The instance of the service container.
+     *
+     * @var App\Contianer | null
+     * */
     private static $container = NULL;
 
     /**
@@ -29,7 +33,7 @@ class App
     *
     * @return App\Container;
     */
-    public static function container() : Container
+    public static function container() : ?Container
     {
         return static::$container;
     }
