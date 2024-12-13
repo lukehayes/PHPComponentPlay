@@ -13,6 +13,8 @@ abstract class Service
 
     /**
      * Get the underlying service.
+     *
+     * @return mixed.
      */
-    abstract public function get() : Object;
+    abstract public function get() : mixed;
 }
