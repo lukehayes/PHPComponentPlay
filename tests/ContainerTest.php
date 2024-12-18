@@ -31,25 +31,25 @@ final class ContainerTest extends TestCase
     {
         $this->assertArrayHasKey(
             'Twig',
-            $this->container->services(),
+            $this->container->getServices(),
             "Instance of " . \App\Service\TwigService::class . " not found"
         );
 
         $this->assertArrayHasKey(
             'Database',
-            $this->container->services(),
+            $this->container->getServices(),
             "Instance of " . \App\Service\DatabaseService::class . " not found"
         );
 
         $this->assertArrayHasKey(
             'Router',
-            $this->container->services(),
+            $this->container->getServices(),
             "Instance of " . \App\Service\RouterService::class . " not found"
         );
 
         $this->assertArrayHasKey(
             'Doctrine',
-            $this->container->services(),
+            $this->container->getServices(),
             "Instance of " . \App\Service\DoctrineService::class . " not found"
         );
     }

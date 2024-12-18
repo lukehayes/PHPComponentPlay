@@ -122,7 +122,7 @@ class Container implements ContainerInterface
      *
      * @return array.
      */
-    public function services() : array
+    public function getServices() : array
     {
         return $this->services;
     }
