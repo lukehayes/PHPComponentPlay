@@ -17,6 +17,16 @@ final class ContainerTest extends TestCase
         $this->assertTrue($this->container->hasBooted());
     }
 
+    public function testCanGetServiceCount(): void
+    {
+        $this->assertIsInt($this->container->getServiceCount());
+
+        $this->assertEquals(
+            $this->container->getServiceCount(),
+            5
+        );
+    }
+
     public function testHasDefaultServices(): void
     {
         $this->assertArrayHasKey(

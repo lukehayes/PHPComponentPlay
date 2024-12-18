@@ -60,6 +60,16 @@ class Container implements ContainerInterface
     }
 
     /**
+     * Get the amount of services defined inside the container.
+     *
+     * @return bool.
+     */
+    public function getServiceCount() : int
+    {
+        return count($this->services);
+    }
+
+    /**
      * Set all of the available services that should be available on boot.
      */
     private function setDefaultServices()
