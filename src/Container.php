@@ -18,9 +18,9 @@ class Container implements ContainerInterface
 
     /**
      * Value is set to true when all services have been initialsed.
-     * @var bool $initialized.
+     * @var bool $booted.
      */
-    private bool $initialized = false;
+    private bool $booted = false;
 
     public function __construct()
     {
@@ -41,8 +41,18 @@ class Container implements ContainerInterface
             $instance->boot();
         }
 
-        $this->initialized = true;
-        return $this->initialized;
+        $this->booted = true;
+        return $this->booted;
+    }
+
+    /**
+     * Returns true if container has intialized all of its services, false otherwise.
+     *
+     * @return bool.
+     */
+    public function hasBooted() : bool
+    {
+        return $this->booted;
     }
 
     /**
