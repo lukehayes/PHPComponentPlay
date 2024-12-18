@@ -44,7 +44,7 @@ class Route
     }
 
     /**
-     * Path getter.
+     * Get the routes path.
      *
      * @return string
      */
@@ -54,7 +54,7 @@ class Route
     }
 
     /**
-     * Action getter.
+     * Get the routes action.
      *
      * @return string
      */
@@ -64,7 +64,7 @@ class Route
     }
 
     /**
-     * Controller getter.
+     * Get the routes controller.
      *
      * @return string
      */
@@ -74,7 +74,7 @@ class Route
     }
 
     /**
-     * Route name getter.
+     * Get the routes associated name.
      *
      * @return string.
      */
