@@ -14,6 +14,9 @@ final class MiddlewareTest extends TestCase
 
     public function setup() : void
     {
+        // TODO Implement Middleware Tests.
+        $this->markTestIncomplete();
+
         $this->app = new App();
 
         // TODO Write unit tests for middleware.

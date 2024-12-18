@@ -9,7 +9,7 @@ final class RouteTest  extends TestCase
 
     public function setup() : void
     {
-        $this->route = new Route('home','/', 'TestController', 'TestAction');
+        $this->route = new Route('home','/', 'TestController', 'TestAction', "GET");
     }
 
     public function testRouteGetters(): void

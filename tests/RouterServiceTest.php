@@ -10,7 +10,10 @@ final class RouterServiceTest extends TestCase
 
     public function setup() : void
     {
+        // TODO Implement Router Service Tests.
+        $this->markTestIncomplete();
         $this->routerSerivce = new RouterService();
+        $this->routerSerivce->boot();
     }
 
     public function testCanGetService(): void

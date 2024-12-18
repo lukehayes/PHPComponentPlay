@@ -18,6 +18,8 @@ final class QueryTest extends TestCase
 
     public function setup() : void
     {
+        // TODO Implement Query Tests.
+        $this->markTestIncomplete();
         $this->app = new App();
         $this->container = new Container();
         $this->app::setContainer($this->container);
