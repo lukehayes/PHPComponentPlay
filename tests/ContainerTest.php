@@ -21,7 +21,7 @@ final class ContainerTest extends TestCase
         );
 
         $this->assertArrayHasKey(
-            'DB',
+            'Database',
             $this->container->services(),
             "Instance of " . \App\Service\DatabaseService::class . " not found"
         );
