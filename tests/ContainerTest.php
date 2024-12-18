@@ -10,7 +10,6 @@ final class ContainerTest extends TestCase
     public function setup() : void
     {
         $this->container = new Container();
-        $this->container->bootServices();
     }
 
     public function testContainerHasBooted(): void

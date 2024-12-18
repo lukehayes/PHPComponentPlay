@@ -24,7 +24,11 @@ class Container implements ContainerInterface
 
     public function __construct()
     {
+        // Sets services inside container.
         $this->setDefaultServices();
+
+        // Calls each services boot() method.
+        $this->bootServices();
     }
 
     /**
