@@ -19,6 +19,21 @@ final class AppTest extends TestCase
             \App\Service\RouterService::class,
             App::getServiceInstance('Router')
         );
+
+        $this->assertInstanceOf(
+            \App\Service\DatabaseService::class,
+            App::getServiceInstance('Database')
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\TwigService::class,
+            App::getServiceInstance('Twig')
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\DoctrineService::class,
+            App::getServiceInstance('Doctrine')
+        );
     }
     
     public function testHasServiceContainer()
