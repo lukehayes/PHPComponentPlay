@@ -40,7 +40,7 @@ final class ContainerTest extends TestCase
         $this->assertArrayHasKey(
             'Doctrine',
             $this->container->services(),
-            "Instance of " . \App\Service\Doctrine::class . " not found"
+            "Instance of " . \App\Service\DoctrineService::class . " not found"
         );
     }
 
