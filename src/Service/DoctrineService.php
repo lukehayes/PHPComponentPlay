@@ -26,6 +26,8 @@ class DoctrineService extends Service
         ];
 
         $this->service = DriverManager::getConnection($connectionParams);
+
+        $this->initialized = true;
     }
 
     /**

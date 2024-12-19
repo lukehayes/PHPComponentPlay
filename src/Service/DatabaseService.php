@@ -21,7 +21,9 @@ class DatabaseService extends Service
      */
     public function boot()
     {
-		$this->service = new SQLiteDatabase("sqlite.db");
+	$this->service = new SQLiteDatabase("sqlite");
+
+        $this->initialized = true;
     }
 
     /**

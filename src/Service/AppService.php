@@ -19,7 +19,9 @@ class AppService extends Service
      */
     public function boot()
     {
-	    $this->service = new App;
+	$this->service = new App;
+
+        $this->initialized = true;
     }
 
     /**

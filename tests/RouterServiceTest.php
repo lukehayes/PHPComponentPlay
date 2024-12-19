@@ -16,6 +16,12 @@ final class RouterServiceTest extends TestCase
         $this->routerSerivce->boot();
     }
 
+
+    public function testServiceHasInitialized(): void
+    {
+        $this->assertTrue($this->routerSerivce->hasInitialized());
+    }
+
     public function testCanGetService(): void
     {
         $this->assertNotNull($this->routerSerivce);

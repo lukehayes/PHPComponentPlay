@@ -21,6 +21,7 @@ class RouterService extends Service
     public function boot()
     {
         $this->service = new Router();
+        $this->initialized = true;
     }
 
 
