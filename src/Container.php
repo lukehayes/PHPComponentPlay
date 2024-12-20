@@ -157,15 +157,20 @@ class Container implements ContainerInterface
      */
     public function get(string $id) : mixed
     {
-        if(array_key_exists($id, $this->services))
-        {
-            if(isset($this->services[$id]))
-            {
-                return $this->services[$id];
-            }
-        }else
+        // Container entries are always capitalized.
+        // This guarantees that the ID will have
+        // the correct capitaliztion.
+        $upcaseID = ucfirst($id);
+
+        if(!array_key_exists($upcaseID, $this->services))
         {
             throw new ServiceNotFoundException("Service: [$id] could not be found.");
+        }else
+        {
+            $service = $this->services[$upcaseID];
+
+            if(isset($service) && !empty($service))
+                return $this->services[$upcaseID];
         }
     }
 
