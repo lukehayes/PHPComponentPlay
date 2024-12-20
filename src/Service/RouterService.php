@@ -24,7 +24,6 @@ class RouterService extends Service
         $this->initialized = true;
     }
 
-
     /**
      * Get the underlying service.
      *
@@ -33,6 +32,17 @@ class RouterService extends Service
     public function get() : ?Router
     {
         return $this->service;
+    }
+
+    // TODO Implemement these magic methods properly.
+    public function __invoke()
+    {
+        return $this->get();
+    }
+
+    public function __call($name, $method)
+    {
+        return $this->get();
     }
 }
 
