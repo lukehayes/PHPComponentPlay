@@ -13,6 +13,13 @@ final class AppTest extends TestCase
         $this->app::setContainer(new (\App\Container::class));
     }
 
+    public function testAppCanBootContainer() : void
+    {
+        $this->assertTrue(App::container()->hasBooted());
+        $this->assertNotNull(App::container());
+        $this->assertInstanceOf(\App\Container::class, \App\App::container());
+    }
+
     public function testAppCanGetService()
     {
         $this->assertInstanceOf(
