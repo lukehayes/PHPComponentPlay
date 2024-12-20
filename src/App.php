@@ -25,6 +25,9 @@ class App
     */
     public static function setContainer(Container $container)
     {
+        // Initialize the service container if it isn't already.
+        if( !$container->hasBooted() ) $container->bootServices();
+
         static::$container = $container;
     }
 
