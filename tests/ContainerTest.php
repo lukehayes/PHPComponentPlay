@@ -54,7 +54,27 @@ final class ContainerTest extends TestCase
         );
     }
 
-    public function testCanGetService()
+    public function testCanGetAppService()
+    {
+        $this->assertTrue(
+            $this->container->has('App'),
+            "Instance of " . 'App'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\AppService::class,
+            $this->container->getInstance('App'),
+            "Instance of " . 'App'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\AppService::class,
+            $this->container->get('App'),
+            "Instance of " . 'App'. " not found"
+        );
+    }
+
+    public function testCanGetTwigService()
     {
         $this->assertTrue(
             $this->container->has('Twig'),
@@ -65,6 +85,72 @@ final class ContainerTest extends TestCase
             \App\Service\TwigService::class,
             $this->container->getInstance('Twig'),
             "Instance of " . 'Twig'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\TwigService::class,
+            $this->container->get('Twig'),
+            "Instance of " . 'Twig'. " not found"
+        );
+    }
+
+    public function testCanGetRouterService()
+    {
+        $this->assertTrue(
+            $this->container->has('Router'),
+            "Instance of " . 'Router'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\RouterService::class,
+            $this->container->getInstance('Router'),
+            "Instance of " . 'Router'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\RouterService::class,
+            $this->container->get('Router'),
+            "Instance of " . 'Router'. " not found"
+        );
+    }
+
+    public function testCanGetDatabaseService()
+    {
+        $this->assertTrue(
+            $this->container->has('Database'),
+            "Instance of " . 'Database'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\DatabaseService::class,
+            $this->container->getInstance('Database'),
+            "Instance of " . 'Database'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\DatabaseService::class,
+            $this->container->get('Database'),
+            "Instance of " . 'Database'. " not found"
+        );
+    }
+
+    public function testCanGetDoctrineService()
+    {
+        $this->assertTrue(
+            $this->container->has('Doctrine'),
+            "Instance of " . 'Doctrine'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\DoctrineService::class,
+            $this->container->getInstance('Doctrine'),
+            "Instance of " . 'Doctrine'. " not found"
+        );
+
+        $this->assertInstanceOf(
+            \App\Service\DoctrineService::class,
+            $this->container->get('Doctrine'),
+            "Instance of " . 'Doctrine'. " not found"
         );
     }
 }
