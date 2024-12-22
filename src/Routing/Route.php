@@ -10,19 +10,18 @@ class Route
 {
     /**
      * @var string|null The path of the route. */
-    private $path;
+    private $path = null;
 
     /** @var string|null The action of the route. */
-    private $action;
+    private $action = null;
 
     /** @var string|null The controller of the route. */
-    private $controller;
+    private $controller = null;
 
     /** @var string|null The name of the route. */
-    private $name;
+    private $name = null;
 
-    /** @var string|null */
-    private $methods;
+    /** @var array */
 
     /**
      * Constructor.
