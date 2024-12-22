@@ -22,6 +22,7 @@ class Route
     private $name = null;
 
     /** @var array */
+    private $methods = [];
 
     /**
      * Constructor.
@@ -80,5 +81,15 @@ class Route
     public function getName() : ?string
     {
         return $this->name;
+    }
+
+    /**
+     * Get all the methods associated with this route.
+     *
+     * @return array.
+     */
+    public function getMethods() :  array
+    {
+        return $this->methods;
     }
 }
